@@ -2,12 +2,11 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import cvxpy as cp
-
+from scipy.spatial import ConvexHull
 
 # Load the dataset
 data = pd.read_csv("StudentsPerformance.csv")
 
-# Extract scores
 scores = data[['math score', 'reading score', 'writing score']]
 scores_array = scores.to_numpy()
 
@@ -17,7 +16,6 @@ original_variance = {
     'reading': np.var(scores['reading score']),
     'writing': np.var(scores['writing score'])
 }
-
 print(original_variance)
 
 # Convex Optimization
@@ -29,7 +27,7 @@ problem = cp.Problem(objective, constraints)
 problem.solve()
 balanced_scores = adjusted_scores.value
 
-# Put balanced scores to DataFrame
+# Convert balanced scores to DataFrame to view in visual
 scores['math_adjusted'] = balanced_scores[:, 0]
 scores['reading_adjusted'] = balanced_scores[:, 1]
 scores['writing_adjusted'] = balanced_scores[:, 2]
@@ -94,7 +92,7 @@ problem_restore = cp.Problem(objective_restore, constraints_restore)
 problem_restore.solve()
 restored_scores_value = restored_scores.value
 
-# Add results to DataFrame
+# Convert results to DataFrame
 scores['math_restored'] = restored_scores_value[:, 0]
 scores['reading_restored'] = restored_scores_value[:, 1]
 scores['writing_restored'] = restored_scores_value[:, 2]
@@ -144,8 +142,6 @@ for i, subject in enumerate(['math', 'reading', 'writing']):
 plt.tight_layout()
 plt.show()
 
-
-from scipy.spatial import ConvexHull
 
 # Function to check and visualize convex hull
 def plot_convex_hull(scores_data, title, ax):
