@@ -34,12 +34,14 @@ The optimization successfully:
 - Handles outliers through convex restoration
 - Maintains the overall score distribution characteristics
 
-![](Presentation\Figure_1.png)
-![](Presentation\Figure_2.png)
-![](Presentation\Figure_3.png)
-![](Presentation\Figure_4.png)
-![](Presentation\Figure_5.png)
-![](Presentation\Figure_6.png)
+# Images for Result:
+
+![](Presentation/Figure_1.png)
+![](Presentation/Figure_2.png)
+![](Presentation/Figure_3.png)
+![](Presentation/Figure_4.png)
+![](Presentation/Figure_5.png)
+![](Presentation/Figure_6.png)
 
 
 ## Visualization Examples
