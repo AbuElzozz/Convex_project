@@ -155,15 +155,14 @@ def plot_convex_hull(scores_data, title, ax):
 
 # Prepare data for convex hull visualization
 scores_2d = scores[['math score', 'reading score']].to_numpy()  # Original scores (2D)
-non_convex_2d = scores[['math_non_convex', 'reading_non_convex']].to_numpy()  # Non-convex scores (2D)
+
 restored_2d = scores[['math_restored', 'reading_restored']].to_numpy()  # Restored scores (2D)
 
 # Plotting convex hulls
-fig, axs = plt.subplots(1, 3, figsize=(18, 6))
+fig, axs = plt.subplots(1, 2, figsize=(18, 6))
 
 plot_convex_hull(scores_2d, "Convex Hull - Original Scores", axs[0])
-plot_convex_hull(non_convex_2d, "Convex Hull - Non-Convex Scores", axs[1])
-plot_convex_hull(restored_2d, "Convex Hull - Restored Scores", axs[2])
+plot_convex_hull(restored_2d, "Convex Hull - Restored Scores", axs[1])
 
 plt.tight_layout()
 plt.show()
